@@ -1,0 +1,182 @@
+@import 'tailwindcss';
+@tailwind utilities;
+
+/* --------------------------------------------------------
+   THEME VARIABLES – DARK (default)
+   -------------------------------------------------------- */
+:root {
+  --bg-color: #0d0d0d;
+  --text-color: #F0F0F0;
+  --text-muted: #888888;
+  --surface-color: #1a1a1a;
+  --border-color: #2a2a2a;
+  --orange: #FF6B00;
+}
+
+/* --------------------------------------------------------
+   CREAM THEME – activated on <html data-theme="cream">
+   -------------------------------------------------------- */
+[data-theme="cream"] {
+  --bg-color: #F5F0E8;
+  --text-color: #1a1a1a;
+  --text-muted: #666666;
+  --surface-color: #EDE8DC;
+  --border-color: #D8D0C4;
+}
+
+/* --------------------------------------------------------
+   LOCAL DARK OVERRIDE – used inside always‑dark containers
+   -------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-color: #0d0d0d;
+  --text-color: #F0F0F0;
+  --text-muted: #888888;
+  --surface-color: #1a1a1a;
+  --border-color: #2a2a2a;
+}
+
+/* --------------------------------------------------------
+   UTILITY CLASSES – use these everywhere
+   -------------------------------------------------------- */
+.bg-theme-bg       { background-color: var(--bg-color); }
+.text-theme-text   { color: var(--text-color); }
+.text-theme-muted  { color: var(--text-muted); }
+.bg-theme-surface  { background-color: var(--surface-color); }
+.border-theme-border { border-color: var(--border-color); }
+.text-orange       { color: var(--orange); }
+.bg-orange         { background-color: var(--orange); }
+
+/* --------------------------------------------------------
+   BASE STYLES
+   -------------------------------------------------------- */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border-color: var(--border-color);
+}
+
+/* Noise grain overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* --------------------------------------------------------
+   KEYFRAMES
+   -------------------------------------------------------- */
+@keyframes ps-gradient-move {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes ps-gradient-wash {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes float-up {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.4; }
+  100% { transform: translateY(-100vh) translateX(100px) scale(0); opacity: 0; }
+}
+@keyframes wave-drift {
+  0%   { transform: translateX(-10%) translateY(0); opacity: 0.2; }
+  25%  { opacity: 0.15; }
+  50%  { transform: translateX(-30%) translateY(-15px); opacity: 0.25; }
+  75%  { opacity: 0.15; }
+  100% { transform: translateX(-10%) translateY(0); opacity: 0.2; }
+}
+@keyframes ps-orbit {
+  0%   { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+@keyframes glitch-flicker {
+  0%   { opacity: 0; }
+  20%  { opacity: 0.2; }
+  25%  { opacity: 1; }
+  30%  { opacity: 0.1; }
+  35%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+@keyframes fade-up {
+  0%   { opacity: 0; transform: translateY(16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in-right {
+  0%   { opacity: 0; transform: translateX(12px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes scale-in {
+  0%   { opacity: 0; transform: scale(0.95); }
+  100% { opacity: 1; transform: scale(1); }
+}
+@keyframes ps-border-travel {
+  0%   { stroke-dashoffset: var(--path-length, 1000); }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* --------------------------------------------------------
+   COMPONENT‑SPECIFIC STYLES
+   -------------------------------------------------------- */
+
+/* Dead Silence – smooth fade in/out, no layout shift */
+.dead-silence-active header,
+.dead-silence-active footer,
+.dead-silence-active aside,
+.dead-silence-active .ad-slot,
+.dead-silence-active .related-posts {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+/* Article layout unchanged – just breathing room */
+.dead-silence-active #post-body {
+  /* no layout change – keep original padding */
+}
+
+/* Floating embers */
+.ember {
+  position: fixed;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--orange);
+  opacity: 0.3;
+  animation: float-up 8s ease-in infinite;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* About panel orbiting PS border */
+.about-panel::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 18px;
+  background: conic-gradient(
+    from 0deg,
+    #4A90D9,
+    #E8A020,
+    #5CB85C,
+    #D9534F,
+    #4A90D9
+  );
+  animation: ps-orbit 6s linear infinite;
+  mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
