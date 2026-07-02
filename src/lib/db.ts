@@ -1,10 +1,19 @@
+// lib/db.ts
 import { Pool } from 'pg'
 
-// Reads from your .env.local DATABASE_URL
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false, // allow self‑signed / Supabase pooler certs
+  },
 })
 
-export const query = (text: string, params: (string | number)[] = []) => {
-  return pool.query(text, params)
+export async function query(text: string, params?: any[]) {
+  const client = await pool.connect()
+  try {
+    const result = await client.query(text, params)
+    return result
+  } finally {
+    client.release()
+  }
 }
