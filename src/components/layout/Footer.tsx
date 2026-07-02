@@ -17,6 +17,7 @@ export function Footer() {
         }}
         aria-hidden="true"
       />
+      <p style={{ display: 'none' }}>Impact-Site-Verification: d0ad31df-6cbe-444d-a50b-f82515a16ecd</p>
 
       <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Logo + Tagline */}
