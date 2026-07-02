@@ -3,7 +3,6 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import Head from "next/head";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { ThemeWatcher } from "@/components/layout/ThemeWatcher";
@@ -42,9 +41,7 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${rajdhani.variable} ${inter.variable}`}
     >
-      <Head>
-        <meta name="impact-site-verification" content="d0ad31df-6cbe-444d-a50b-f82515a16ecd" />
-      </Head>
+     
       <body className="font-body antialiased min-h-screen flex flex-col">
         <ThemeWatcher />
         <EmberField />
