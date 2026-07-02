@@ -1,11 +1,10 @@
 import { getCategoryData } from '@/lib/posts'
-import { CategorySplitPanel } from '@/components/category/CategorySplitPanel'
+import { CategoryGrid } from '@/components/category/CategoryGrid'
 
 export const dynamic = 'force-dynamic'
 
 export default async function CategoriesPage() {
   const categoryData = await getCategoryData()
-  // Use only categories that have an image & verdict available
   const categories = Object.keys(categoryData)
 
   if (categories.length === 0) {
@@ -17,8 +16,11 @@ export default async function CategoriesPage() {
   }
 
   return (
-    <div className="min-h-screen">
-      <CategorySplitPanel categoryData={categoryData} categories={categories} />
+    <div className="mx-auto max-w-7xl px-6 py-12">
+      <h1 className="font-heading text-4xl font-bold text-theme-text mb-8">
+        Browse by Category
+      </h1>
+      <CategoryGrid categoryData={categoryData} categories={categories} />
     </div>
   )
 }

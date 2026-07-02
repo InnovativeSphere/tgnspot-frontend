@@ -59,7 +59,7 @@ export function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center shrink-0">
           <Image
-            src="/Logo1.jfif"
+            src="/Logo1.png"
             alt="TGNSpot Logo"
             width={120}
             height={40}

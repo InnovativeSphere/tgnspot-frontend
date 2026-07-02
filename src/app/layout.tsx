@@ -10,6 +10,7 @@ import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { PulseModal } from "@/components/ui/PulseModal";
 import { EmberField } from "@/components/ui/EmberField";
 import { PageTransition } from "@/components/ui/PageTransition";
+import { RouteLoader } from "@/components/ui/RouteLoader";
 
 const rajdhani = Rajdhani({
   subsets: ["latin"],
@@ -47,9 +48,7 @@ export default function RootLayout({
         <EmberField />
         <Navbar />
 
-        <main className="flex-grow">
-          <PageTransition>{children}</PageTransition>
-        </main>
+        <main className="flex-grow">{children}</main>
         <Footer />
         <ScrollToTop />
         <PulseModal />

@@ -1,8 +1,8 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
 export function Footer() {
-  const year = new Date().getFullYear()
+  const year = new Date().getFullYear();
 
   return (
     <footer className="relative bg-dark-surface cream:bg-cream-surface border-t border-dark-border cream:border-cream-border mt-auto">
@@ -11,20 +11,19 @@ export function Footer() {
         className="absolute top-0 left-0 right-0 "
         style={{
           background:
-            'linear-gradient(90deg, #4A90D9 25%, #E8A020 25% 50%, #5CB85C 50% 75%, #D9534F 75% 100%)',
-          backgroundSize: '200% 100%',
-          animation: 'ps-gradient-move 4s ease infinite',
+            "linear-gradient(90deg, #4A90D9 25%, #E8A020 25% 50%, #5CB85C 50% 75%, #D9534F 75% 100%)",
+          backgroundSize: "200% 100%",
+          animation: "ps-gradient-move 4s ease infinite",
         }}
         aria-hidden="true"
       />
-      <p style={{ display: 'none' }}>Impact-Site-Verification: d0ad31df-6cbe-444d-a50b-f82515a16ecd</p>
 
       <div className="mx-auto max-w-7xl px-6 py-10 flex flex-col items-center gap-6 text-center">
         {/* Logo + Tagline */}
         <div className="flex flex-col items-center gap-3">
           <Link href="/" className="shrink-0 group">
             <Image
-              src="/Logo1.jfif"
+              src="/Logo1.png"
               alt="TGNSpot Logo"
               width={130}
               height={44}
@@ -34,6 +33,22 @@ export function Footer() {
           <p className="font-body text-sm text-dark-muted cream:text-cream-muted italic max-w-xs">
             "Where gaming, tech, and culture meet."
           </p>
+        </div>
+
+        <div className="flex items-center gap-6">
+          <a
+            href="/privacy"
+            className="hover:text-theme-text transition-colors"
+          >
+            Privacy
+          </a>
+          <a
+            href="mailto:hello@tgnspot.com"
+            className="hover:text-theme-text transition-colors"
+          >
+            Contact
+          </a>
+          <span>© {year}</span>
         </div>
 
         {/* Contact & Copyright */}
@@ -53,5 +68,5 @@ export function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }

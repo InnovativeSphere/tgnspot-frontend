@@ -1,4 +1,4 @@
-import { getLatestPosts, getCategories } from '@/lib/posts'
+﻿import { getLatestPosts, getCategories } from '@/lib/posts'
 import { getReadTime } from '@/lib/utils'
 import { HomeContent } from '@/components/home/HomeFeed'
 
@@ -28,7 +28,7 @@ export default async function HomePage({ searchParams }: HomePageProps) {
     subtitle: p.subtitle,
     excerpt: p.excerpt || p.content?.split('.')[0] + '.',
     hero_image_url: p.hero_image_url,
-    category: p.category || ['Gaming'], // ensure array
+    category: p.category || ['Gaming'],
     readTime: getReadTime(p.content || ''),
     mood_primary: p.mood_primary || 'Analytical',
     mood_secondary: p.mood_secondary,
