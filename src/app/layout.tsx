@@ -8,6 +8,8 @@ import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { ThemeWatcher } from '@/components/layout/ThemeWatcher'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
+import { EmberField } from '@/components/ui/EmberField'
+import { PulseModal } from '@/components/ui/PulseModal'
 
 const rajdhani = Rajdhani({
   subsets: ['latin'],
@@ -26,7 +28,6 @@ const inter = Inter({
 export const metadata = {
   title: 'TGNSpot',
   description: 'Where gaming, tech, and culture meet.',
-  // 👇 Your GSC verification tag goes right here
   verification: {
     google: 'ohafua6d034eSgG2HDmoV64g6SmE0hD53hncP9aTAp0',
   },
@@ -45,10 +46,12 @@ export default function RootLayout({
     >
       <body className="font-body antialiased min-h-screen flex flex-col">
         <ThemeWatcher />
+        <EmberField />
         <Navbar />
         <main className="flex-grow">{children}</main>
         <Footer />
         <ScrollToTop />
+        <PulseModal />
         <Toaster position="bottom-center" toastOptions={{ duration: 3000 }} />
         <Analytics />
         <SpeedInsights />
