@@ -28,9 +28,6 @@ const inter = Inter({
 export const metadata = {
   title: 'TGNSpot',
   description: 'Where gaming, tech, and culture meet.',
-  verification: {
-    google: 'ohafua6d034eSgG2HDmoV64g6SmE0hD53hncP9aTAp0',
-  },
 }
 
 export default function RootLayout({
@@ -44,6 +41,9 @@ export default function RootLayout({
       suppressHydrationWarning
       className={`${rajdhani.variable} ${inter.variable}`}
     >
+      <head>
+        <meta name="google-site-verification" content="ohafua6d034eSgG2HDmoV64g6SmE0hD53hncP9aTAp0" />
+      </head>
       <body className="font-body antialiased min-h-screen flex flex-col">
         <ThemeWatcher />
         <EmberField />
